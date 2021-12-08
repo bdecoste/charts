@@ -1,27 +1,20 @@
-# Kong Helm Charts
+## Usage
 
-This is the official Helm Charts repository for installing Kong on Kubernetes.
+[Helm](https://helm.sh) must be installed to use the charts.  Please refer to
+Helm's [documentation](https://helm.sh/docs) to get started.
 
-## Setup
+Once Helm has been set up correctly, add the repo as follows:
 
-```bash
-$ helm repo add kong https://charts.konghq.com
-$ helm repo update
+  helm repo add <alias> https://<orgname>.github.io/helm-charts
 
-# Helm 2
-$ helm install kong/kong
+If you had already added this repo earlier, run `helm repo update` to retrieve
+the latest versions of the packages.  You can then run `helm search repo
+<alias>` to see the charts.
 
-# Helm 3
-$ helm install kong/kong --generate-name --set ingressController.installCRDs=false
-```
+To install the <chart-name> chart:
 
-## Documentation
+    helm install my-<chart-name> <alias>/<chart-name>
 
-The documentation for Kong's Helm Chart is available at
-[here](https://github.com/Kong/charts/blob/main/charts/kong/README.md).
+To uninstall the chart:
 
-## Seeking help
-
-If you run into an issue, bug or have a question, please reach out to the Kong
-community via [Kong Nation](https://discuss.konghq.com) or open Github
-issues in [this](https://github.com/kong/charts/issues) repository.
+    helm delete my-<chart-name>
