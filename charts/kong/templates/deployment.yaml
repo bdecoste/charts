@@ -198,6 +198,16 @@ spec:
           {{- end}}
           protocol: TCP
         {{- end }}
+        {{- if .Values.clusterservice }}
+        {{- if (and .Values.clusterservice.tls.enabled .Values.clusterservice.enabled) }}
+        - name: cluster-tls
+          containerPort: {{ .Values.clusterservice.tls.containerPort }}
+          {{- if .Values.clusterservice.tls.hostPort }}
+          hostPort: {{ .Values.clusterservice.tls.hostPort }}
+          {{- end}}
+          protocol: TCP
+        {{- end }}
+        {{- end }}
         {{- if .Values.enterprise.enabled }}
         {{- if (and .Values.manager.http.enabled .Values.manager.enabled) }}
         - name: manager
